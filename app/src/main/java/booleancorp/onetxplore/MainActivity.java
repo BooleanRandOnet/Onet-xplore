@@ -8,7 +8,6 @@ public class MainActivity extends Activity {
 
     // Test à marché !!
     // Salut bb <3
-    // Salut asv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

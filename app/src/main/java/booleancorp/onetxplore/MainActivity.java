@@ -11,6 +11,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         // Cacher la barre du titre
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.champscnx);
     }
 }

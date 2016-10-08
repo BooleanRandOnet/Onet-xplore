@@ -5,8 +5,8 @@ import android.os.Bundle;
 
 public class MainActivity extends Activity {
 
-    // Test à marché !! cc
-    // OUI JE FAIS DES CHANGEMENTS
+    // Test à marché !!
+    // Salut
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

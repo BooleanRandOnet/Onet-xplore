@@ -1,4 +1,4 @@
-package booleancorp.onetxplore;
+package booleancorp.onetxplore.classebdd;
 
 public class Joueur {
 

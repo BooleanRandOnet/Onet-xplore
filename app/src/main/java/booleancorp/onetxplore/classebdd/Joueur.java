@@ -54,12 +54,6 @@ public class Joueur {
 
     @Override
     public String toString() {
-        return "Joueur{" +
-                "id=" + id +
-                ", pseudo='" + pseudo + '\'' +
-                ", password='" + password + '\'' +
-                ", score=" + score +
-                ", photo='" + photo + '\'' +
-                '}';
+        return "#J " + id + "\t" + pseudo + "\nScore : " + score + "\nPhoto : " + photo;
     }
 }

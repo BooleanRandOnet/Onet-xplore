@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pseudoLbl" />
+        android:id="@+id/pseudoLbl"
+        android:text="Pseudo" />
 
     <EditText
         android:layout_width="match_parent"
@@ -20,7 +21,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mdpLbl" />
+        android:id="@+id/mdpLbl"
+        android:text="Mot de passe" />
 
     <EditText
         android:layout_width="match_parent"

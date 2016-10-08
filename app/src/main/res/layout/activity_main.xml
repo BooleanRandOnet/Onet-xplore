@@ -7,7 +7,7 @@
     android:paddingLeft="20dip"
     android:paddingRight="20dip"
     android:paddingTop="20dip"
-    android:background="@drawable/background"
+    android:background="@drawable/bgflou"
     tools:context="booleancorp.onetxplore.MainActivity">
 
     <LinearLayout

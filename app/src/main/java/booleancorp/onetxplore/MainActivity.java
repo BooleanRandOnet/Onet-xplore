@@ -6,8 +6,6 @@ import android.view.Window;
 
 public class MainActivity extends Activity {
 
-    // Test à marché !!
-    // Salut bb <3
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

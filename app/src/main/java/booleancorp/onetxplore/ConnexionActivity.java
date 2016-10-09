@@ -1,7 +1,6 @@
 package booleancorp.onetxplore;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.*;
@@ -9,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class ConnexionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +17,7 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.inscription);
+        setContentView(R.layout.connexion);
 
         TextView tvPseudo = (TextView)findViewById(R.id.tvPseudo);
         TextView tvMdp = (TextView)findViewById(R.id.tvMdp);
@@ -46,6 +45,5 @@ public class MainActivity extends Activity {
      */
     public void clicConnexion(View view) {
         Toast.makeText(this, "Clic", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(this, ConnexionActivity.class));
     }
 }

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Onet\'xplore</string>
-
+    <string name="pseudo">Pseudo</string>
+    <string name="mdp">Mot de passe</string>
     <!-- inscription.xml -->
 
 </resources>

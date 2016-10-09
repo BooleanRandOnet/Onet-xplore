@@ -45,5 +45,6 @@ public class ConnexionActivity extends Activity {
      */
     public void clicConnexion(View view) {
         Toast.makeText(this, "Clic", Toast.LENGTH_LONG).show();
+        finish();
     }
 }

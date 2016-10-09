@@ -97,6 +97,7 @@
             android:id="@+id/btnValider"
             android:background="#ffffff"
             android:contentDescription="@string/app_name"
+            android:onClick="clicConnexion"
             android:layout_height="60dip" />
 
         <TextView
@@ -107,6 +108,7 @@
             android:textColor="#ec6451"
             android:textSize="18sp"
             android:gravity="center_horizontal"
+            android:clickable="true"
             android:onClick="clicConnexion"
             android:layout_marginTop="15dip"/>
 

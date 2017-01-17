@@ -5,4 +5,5 @@ package booleancorp.onetxplore.view.map;
  */
 
 public class MapActivity {
+    //TODO Structure
 }

@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Anime ue vue de droite a gauche et vice versa.
+     * Anime une vue de droite a gauche et vice versa.
      * @param bg vue animer, a savoir le BG
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)

@@ -1,4 +1,4 @@
-package booleancorp.onetxplore.view.map.missions;
+package booleancorp.onetxplore.view.missions;
 
 /**
  * Created by matthieubravo on 17/01/2017.

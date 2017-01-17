@@ -78,6 +78,7 @@
                 android:id="@+id/tvPseudo"
                 android:text="@string/pseudo"/>
 
+            <!--TODO Problème cadre version réelle -->
             <EditText
                 android:layout_width="250dip"
                 android:layout_height="wrap_content"
@@ -96,6 +97,7 @@
                 android:textColor="#EC6451"
                 android:text="@string/mdp"/>
 
+            <!--TODO Problème cadre version réelle -->
             <EditText
                 android:layout_width="250dip"
                 android:layout_height="wrap_content"

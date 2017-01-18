@@ -161,7 +161,8 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                sender.animate().translationX(8).translationY(10).setDuration(65);
+                float offset = sender.getWidth() * 0.008f;
+                sender.animate().translationX(offset).translationY(offset).setDuration(65);
                 break;
             case MotionEvent.ACTION_UP:
                 sender.animate().translationX(0).translationY(0).setDuration(200);

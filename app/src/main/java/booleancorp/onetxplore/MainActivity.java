@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import booleancorp.onetxplore.Constants.*;
-import booleancorp.onetxplore.view.map.MapActivity;
+import booleancorp.onetxplore.view.map.MapViewActivity;
 
 public class MainActivity extends Activity {
 
@@ -37,18 +37,15 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //création des constante
+        //création des constantes
         constante = new Constante(this);
 
         super.onCreate(savedInstanceState);
-        // Cacher la barre du titre et de notifications
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.inscription);
 
 
-        //récupérationd des éléments du XML
+        //récupération des éléments du XML
         bg = (ImageView) findViewById(R.id.bg);
         RelativeLayout.LayoutParams paramsBG = new RelativeLayout.LayoutParams(constante.screenWidth*3, ViewGroup.LayoutParams.MATCH_PARENT);
         paramsBG.rightMargin = -constante.screenWidth*3;
@@ -84,7 +81,7 @@ public class MainActivity extends Activity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
-        ////////////CACHER LA BARRE DE NAVIGATION
+        ////////////CACHER LA BARRE DE NAVIGATION ET DE NOTIFICATION
         View decorView = getWindow().getDecorView();
         // Hide both the navigation bar and the status bar.
         // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
@@ -154,7 +151,7 @@ public class MainActivity extends Activity {
      * @param view bouton de connexion/inscription
      */
     public void clicConnexion(View view) {
-        Intent mapIntent = new Intent(this, MapActivity.class);
+        Intent mapIntent = new Intent(this, MapViewActivity.class);
         startActivity(mapIntent);
     }
 }

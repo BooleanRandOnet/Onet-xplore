@@ -2,6 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="booleancorp.onetxplore">
 
+
+    <!-- on crée une permission pour notre application -->
+    <permission android:name="com.android.app.mapv2"
+        android:protectionLevel="signature"/>
+    <!-- on ajoute notre permission à la liste de permissions requises par l'API -->
+    <uses-permission android:name="com.abyster.tuto.mapv2.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="@string/app_name" android:name=".view.map.MapActivity"/>
+        <activity android:label="@string/app_name" android:name=".view.map.MapViewActivity"/>
     </application>
 
 </manifest>

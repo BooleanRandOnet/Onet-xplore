@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent" >
 
-    <!-- TODO Map Google (A gérer ici ?) -->
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/mapfr"
-    tools:context=".MapsActivity"
-    android:name="com.google.android.gms.maps.SupportMapFragment" />
+    <!-- TODO Map Google-->
+    <com.google.android.maps.MapView
+    android:id="@+id/mapView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:apiKey="@string/mapKey"
+    android:clickable="true" />
 
     <!-- TODO Bouton missionBT (haut gauche)-->
 
@@ -20,4 +19,4 @@
 
     <!-- TODO bottom_bar_view -->
 
-</LinearLayout>
+</RelativeLayout>

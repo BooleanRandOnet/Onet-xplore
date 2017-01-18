@@ -1,4 +1,4 @@
-package booleancorp.onetxplore;
+package booleancorp.onetxplore.controller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import booleancorp.onetxplore.Animations.CompassWaitLayout;
 import booleancorp.onetxplore.Constants.*;
+import booleancorp.onetxplore.R;
 import booleancorp.onetxplore.view.map.MapsActivity;
 
 public class MainActivity extends Activity implements View.OnTouchListener{

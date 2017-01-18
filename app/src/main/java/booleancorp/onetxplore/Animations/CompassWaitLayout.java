@@ -39,7 +39,7 @@ public class CompassWaitLayout extends RelativeLayout {
 
         ImageView compassBG = new ImageView(context);
         LayoutParams paramsCB = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        paramsCB.setMargins(10,10,10,10);
+        paramsCB.setMargins(30,30,30,30);
         paramsCB.addRule(CENTER_IN_PARENT);
         compassBG.setLayoutParams(paramsCB);
         compassBG.setImageResource(R.drawable.compass_part1);
@@ -47,7 +47,7 @@ public class CompassWaitLayout extends RelativeLayout {
 
         compassPeak = new ImageView(context);
         LayoutParams paramsCP = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        paramsCP.setMargins(10,10,10,10);
+        paramsCP.setMargins(30,30,30,30);
         paramsCP.addRule(CENTER_IN_PARENT);
         compassPeak.setLayoutParams(paramsCP);
         compassPeak.setImageResource(R.drawable.compass_part2);

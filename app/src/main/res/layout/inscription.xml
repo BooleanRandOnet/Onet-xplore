@@ -81,11 +81,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
+                android:maxLength="30"
                 android:id="@+id/pseudoField"
                 android:background="@drawable/inputshape"
                 android:textColor="#838383"
-                android:textAlignment="center"
-                android:layout_marginBottom="20dip"/>
+                android:textAlignment="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -101,12 +101,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:maxLength="30"
                 android:background="@drawable/inputshape"
                 android:gravity="center_vertical"
                 android:textColor="#838383"
                 android:textAlignment="center"
-                android:id="@+id/mdpField" />
-
+                android:id="@+id/mdpField"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dip"

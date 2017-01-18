@@ -161,15 +161,18 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                float offset = sender.getWidth() * 0.01f;
+                float offset = sender.getWidth() * 0.012f;
                 sender.animate().translationX(offset).translationY(offset).setDuration(65);
                 break;
             case MotionEvent.ACTION_UP:
                 sender.animate().translationX(0).translationY(0).setDuration(200);
                 //if (etPseudo.getText().length() != 0 && etPseudo.getText().length() != 0) {
                     //animer le chargement
-                    CompassWaitLayout compassWaitLayout = new CompassWaitLayout(getApplicationContext());
+                    final CompassWaitLayout compassWaitLayout = new CompassWaitLayout(getApplicationContext());
                     bgConn.addView(compassWaitLayout);
+
+                    bg.animate().alpha(100).setDuration(400);
+                    bgConn.animate().alpha(100).setDuration(400);
 
                     if ((int) sender.getTag() == 1) {
                         Log.i("Connection", "en cours...");

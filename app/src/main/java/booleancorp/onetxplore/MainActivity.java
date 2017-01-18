@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.util.Log;
 import android.view.*;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,9 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import booleancorp.onetxplore.Constants.*;
-import booleancorp.onetxplore.view.map.MapViewActivity;
+import booleancorp.onetxplore.view.map.MapsActivity;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnTouchListener{
 
     /**Constante*/
     private Constante constante;
@@ -60,6 +61,7 @@ public class MainActivity extends Activity {
         actionBT = (ImageButton) findViewById(R.id.btnValider);
         actionBT.getBackground().setAlpha(0);
         actionBT.setTag(1);
+        actionBT.setOnTouchListener(this);
         bgConn = (RelativeLayout) findViewById(R.id.bg_insc);
 
         //animation d'ouverture
@@ -96,8 +98,6 @@ public class MainActivity extends Activity {
 
         decorView.setSystemUiVisibility(uiOptions);
         /////////////
-
-
     }
 
     /**
@@ -148,10 +148,34 @@ public class MainActivity extends Activity {
     /**
      * Capture l'évènement du bouton de connexion/inscription
      * Procède a la connexion ou a l'inscription
-     * @param view bouton de connexion/inscription
+     * @param sender bouton de connexion/inscription
+     * @param motionEvent type d'évènement effectué sur le bouton
      */
-    public void clicConnexion(View view) {
-        Intent mapIntent = new Intent(this, MapViewActivity.class);
-        startActivity(mapIntent);
+    @Override
+    public boolean onTouch(View sender, MotionEvent motionEvent) {
+
+        final int action = motionEvent.getAction();
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                sender.animate().translationX(8).translationY(10).setDuration(65);
+                break;
+            case MotionEvent.ACTION_UP:
+                sender.animate().translationX(0).translationY(0).setDuration(200);
+                //if (etPseudo.getText().length() != 0 && etPseudo.getText().length() != 0) {
+                    if ((int) sender.getTag() == 1) {
+                        Log.i("Connection", "en cours...");
+                    } else {
+                        Log.i("Inscription", "en cours...");
+                    }
+                //}
+                Intent mapIntent = new Intent(this, MapsActivity.class);
+                startActivity(mapIntent);
+            case MotionEvent.ACTION_CANCEL:
+                sender.animate().translationX(0).translationY(0).setDuration(200);
+                break;
+        }
+
+        return false;
     }
 }

@@ -137,7 +137,6 @@
                     android:id="@+id/btnValider"
                     android:background="#ffffff"
                     android:contentDescription="@string/app_name"
-                    android:onClick="clicConnexion"
                     android:layout_marginBottom="1dp"/>
 
             </RelativeLayout>

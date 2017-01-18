@@ -10,9 +10,11 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.Log;
 import android.view.*;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,8 @@ import booleancorp.onetxplore.Animations.CompassWaitLayout;
 import booleancorp.onetxplore.Constants.*;
 import booleancorp.onetxplore.view.map.MapsActivity;
 
+import static java.lang.Math.round;
+
 public class MainActivity extends Activity implements View.OnTouchListener{
 
     /**Constante*/
@@ -28,12 +32,23 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
     /**Element de la vue*/
     private ImageView bg;
+
+    private RelativeLayout bgConn;
+
+    private LinearLayout contentLL;
+
+    private RelativeLayout imgLog;
+    private View imgStrokeBack;
+    private Button plusBt;
+
+    private View strokeColorUp;
+    private View strokeColorDown;
+
     private TextView tvPseudo;
     private TextView tvMdp;
     private EditText etPseudo;
-    private EditText mdpTV;
+    private EditText etMdp;
     private TextView tvConnexion;
-    private RelativeLayout bgConn;
     private ImageButton actionBT;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -55,20 +70,135 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         bg.setLayoutParams(paramsBG);
         animBackground(bg);
 
-        tvPseudo = (TextView)findViewById(R.id.tvPseudo);
-        tvMdp = (TextView)findViewById(R.id.tvMdp);
-        etPseudo = (EditText) findViewById(R.id.pseudoField);
-        mdpTV = (EditText) findViewById(R.id.mdpField);
-        tvConnexion = (TextView) findViewById(R.id.tvConnexion);
-        actionBT = (ImageButton) findViewById(R.id.btnValider);
-        actionBT.getBackground().setAlpha(0);
-        actionBT.setTag(1);
-        actionBT.setOnTouchListener(this);
+        //----background arrondi blanc
         bgConn = (RelativeLayout) findViewById(R.id.bg_insc);
+
+        RelativeLayout.LayoutParams paramsBGC = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        int margin = (int)round(constante.getScreenWidth()*0.2/2);
+        paramsBGC.setMargins(margin,margin,margin,-margin);
+        bgConn.setLayoutParams(paramsBGC);
 
         //animation d'ouverture
         bgConn.setY(constante.getScreenHeight());
         bgConn.animate().translationY(0).setDuration(500).setInterpolator(new LinearOutSlowInInterpolator());
+        //----
+
+        //----layout de contenu
+        contentLL = (LinearLayout) findViewById(R.id.lin_lay_content);
+
+        RelativeLayout.LayoutParams paramsCLL = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        int marginCLL = (int)round(constante.getScreenWidth()*0.108);
+        paramsCLL.setMargins(marginCLL,0,marginCLL,0);
+        contentLL.setLayoutParams(paramsCLL);
+        //----
+
+        //----layout de la vue de la photo de profil
+
+        int parentIMGLogWidth = (int)round(constante.getScreenWidth()-constante.getScreenWidth()*0.2);
+
+
+        imgLog = (RelativeLayout) findViewById(R.id.img_log);
+
+        int sizeIL = (int)round(parentIMGLogWidth*0.37);
+        LinearLayout.LayoutParams paramsIL = new LinearLayout.LayoutParams(sizeIL, sizeIL);
+        int marginIL = (int)round(constante.getScreenHeight()*0.078);
+        paramsIL.setMargins(0,marginIL,0,0);
+        imgLog.setLayoutParams(paramsIL);
+
+
+        imgStrokeBack = (View) findViewById(R.id.img_stroke_back);
+
+        int sizeISB = (int)round(parentIMGLogWidth*0.086);
+        RelativeLayout.LayoutParams paramsISB = new RelativeLayout.LayoutParams(sizeISB, sizeISB);
+        //margin car peut pas mettre de rule et ca écrase le XML
+        int marginISB = sizeIL-sizeISB;
+        paramsISB.setMargins(marginISB,marginISB,0,0);
+        imgStrokeBack.setLayoutParams(paramsISB);
+
+
+        plusBt = (Button) findViewById(R.id.plus_bt);
+
+        int sizePB = sizeISB-4;
+        RelativeLayout.LayoutParams paramsPB = new RelativeLayout.LayoutParams(sizePB, sizePB);
+        int marginPB = (sizeIL-sizeISB)+2;
+        paramsPB.setMargins(marginPB,marginPB,0,0);
+        plusBt.setLayoutParams(paramsPB);
+
+
+        //----
+
+        //----vues formant les trait de délimitation
+
+        strokeColorUp = (View) findViewById(R.id.stroke_color_up);
+
+        int widthSCU = (int)round(parentIMGLogWidth*0.6);
+        LinearLayout.LayoutParams paramsSCU = new LinearLayout.LayoutParams(widthSCU, 2);
+        int marginSCU = (int) round(constante.getScreenHeight()*0.086);
+        paramsSCU.setMargins(0,marginSCU,0,0);
+        strokeColorUp.setLayoutParams(paramsSCU);
+
+
+        strokeColorDown = (View) findViewById(R.id.stroke_color_down);
+
+        int widthSCD = (int)round(parentIMGLogWidth*0.6);
+        LinearLayout.LayoutParams paramsSCD = new LinearLayout.LayoutParams(widthSCD, 2);
+        int marginSCD = (int) round(constante.getScreenHeight()*0.047);
+        paramsSCD.setMargins(0,marginSCD,0,0);
+        strokeColorDown.setLayoutParams(paramsSCD);
+
+        //----
+
+        //----vues formant le formulaire d'inscription/connexion
+
+        int fieldViewHeight = (int) round(constante.getScreenHeight()*0.65-constante.getScreenHeight()*0.33) ;
+
+
+        tvPseudo = (TextView)findViewById(R.id.tvPseudo);
+
+        int heightPTV = (int) round(fieldViewHeight*0.109) ;
+        LinearLayout.LayoutParams paramsPTV = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightPTV);
+        int marginPTV = (int) round(constante.getScreenHeight()*0.034);
+        paramsPTV.setMargins(0,marginPTV,0,0);
+        tvPseudo.setLayoutParams(paramsPTV);
+
+
+        etPseudo = (EditText) findViewById(R.id.pseudoField);
+
+        int heightPET = (int) round(fieldViewHeight*0.168) ;
+        LinearLayout.LayoutParams paramsPET = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightPET);
+        int marginPET = (int) round(constante.getScreenHeight()*0.014);
+        paramsPET.setMargins(0,marginPET,0,0);
+        etPseudo.setLayoutParams(paramsPET);
+
+
+        tvMdp = (TextView)findViewById(R.id.tvMdp);
+
+        int heightMTV = (int) round(fieldViewHeight*0.109) ;
+        LinearLayout.LayoutParams paramsMTV = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightMTV);
+        int marginMTV = (int) round(constante.getScreenHeight()*0.034);
+        paramsMTV.setMargins(0,marginMTV,0,0);
+        tvMdp.setLayoutParams(paramsMTV);
+
+
+        etMdp = (EditText) findViewById(R.id.mdpField);
+
+        int heightMET = (int) round(fieldViewHeight*0.168) ;
+        LinearLayout.LayoutParams paramsMET = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightMET);
+        int marginMET = (int) round(constante.getScreenHeight()*0.014);
+        paramsMET.setMargins(0,marginMET,0,0);
+        etMdp.setLayoutParams(paramsMET);
+
+        //----
+
+        //----bouton d'intéraction
+
+        actionBT = (ImageButton) findViewById(R.id.btnValider);
+
+        actionBT.getBackground().setAlpha(0);
+        actionBT.setTag(1);
+        actionBT.setOnTouchListener(this);
+
+        tvConnexion = (TextView) findViewById(R.id.tvConnexion);
 
         createContent((int)actionBT.getTag());
 

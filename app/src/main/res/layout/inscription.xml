@@ -100,7 +100,8 @@
                 android:id="@+id/pseudoField"
                 android:background="@drawable/inputshape"
                 android:textColor="#838383"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:selectAllOnFocus="false" />
 
             <TextView
                 android:layout_width="match_parent"

@@ -191,7 +191,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         //----
 
-        //----bouton d'intéraction
+        //----boutons d'intéraction
 
         actionBT = (ImageButton) findViewById(R.id.btnValider);
 

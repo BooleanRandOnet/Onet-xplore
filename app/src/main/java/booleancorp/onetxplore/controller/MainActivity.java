@@ -1,4 +1,4 @@
-package booleancorp.onetxplore;
+package booleancorp.onetxplore.controller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import booleancorp.onetxplore.Animations.CompassWaitLayout;
 import booleancorp.onetxplore.Constants.*;
+import booleancorp.onetxplore.R;
 import booleancorp.onetxplore.view.map.MapsActivity;
 
 public class MainActivity extends Activity implements View.OnTouchListener{
@@ -177,27 +178,37 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                     if ((int) sender.getTag() == 1) {
                         Log.i("Connection", "en cours...");
                         //TODO charger les informations de la BD et après appelé l'ouverture de la vue
-                        //ouvrir la nouvelle page (simuler le temps de chargement)
-                        final MainActivity that = this;
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent mapIntent = new Intent(that, MapsActivity.class);
-                                startActivity(mapIntent);
-                            }
-                        },4000);
+                        boolean connexion = false; // STUB En attendant la fonction connexion de la bd
+                        if(!connexion) {
+                            // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
+                        } else {
+                            //ouvrir la nouvelle page (simuler le temps de chargement)
+                            final MainActivity that = this;
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent mapIntent = new Intent(that, MapsActivity.class);
+                                    startActivity(mapIntent);
+                                }
+                            }, 4000);
+                        }
                     } else {
                         Log.i("Inscription", "en cours...");
                         //TODO charger les informations de la BD et après appelé l'ouverture de la vue
-                        //ouvrir la nouvelle page (simuler le temps de chargement)
-                        final MainActivity that = this;
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent mapIntent = new Intent(that, MapsActivity.class);
-                                startActivity(mapIntent);
-                            }
-                        },4000);
+                        boolean inscription = false; // STUB En attendant la fonction inscription de la bd
+                        if(!inscription) {
+                            // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
+                        } else {
+                            //ouvrir la nouvelle page (simuler le temps de chargement)
+                            final MainActivity that = this;
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent mapIntent = new Intent(that, MapsActivity.class);
+                                    startActivity(mapIntent);
+                                }
+                            }, 4000);
+                        }
                     }
                 //}
             case MotionEvent.ACTION_CANCEL:

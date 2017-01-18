@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import booleancorp.onetxplore.Animations.CompassWaitLayout;
 import booleancorp.onetxplore.Constants.*;
 import booleancorp.onetxplore.view.map.MapsActivity;
 
@@ -48,8 +50,8 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         //récupération des éléments du XML
         bg = (ImageView) findViewById(R.id.bg);
-        RelativeLayout.LayoutParams paramsBG = new RelativeLayout.LayoutParams(constante.screenWidth*3, ViewGroup.LayoutParams.MATCH_PARENT);
-        paramsBG.rightMargin = -constante.screenWidth*3;
+        RelativeLayout.LayoutParams paramsBG = new RelativeLayout.LayoutParams(constante.getScreenHeight()*3, ViewGroup.LayoutParams.MATCH_PARENT);
+        paramsBG.rightMargin = -constante.getScreenWidth()*3;
         bg.setLayoutParams(paramsBG);
         animBackground(bg);
 
@@ -65,7 +67,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         bgConn = (RelativeLayout) findViewById(R.id.bg_insc);
 
         //animation d'ouverture
-        bgConn.setY(constante.screenHeight);
+        bgConn.setY(constante.getScreenHeight());
         bgConn.animate().translationY(0).setDuration(500).setInterpolator(new LinearOutSlowInInterpolator());
 
         createContent((int)actionBT.getTag());
@@ -106,10 +108,10 @@ public class MainActivity extends Activity implements View.OnTouchListener{
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void animBackground(final ImageView bg){
-        bg.animate().translationX(-constante.screenWidth*2).setDuration(15000).withEndAction(new Runnable() {
+        bg.animate().translationX(-constante.getScreenWidth()*2).setDuration(10000).withEndAction(new Runnable() {
             @Override
             public void run() {
-                bg.animate().translationX(0).setDuration(15000).withEndAction(new Runnable() {
+                bg.animate().translationX(0).setDuration(10000).withEndAction(new Runnable() {
                     @Override
                     public void run() {
                         animBackground(bg);
@@ -151,6 +153,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
      * @param sender bouton de connexion/inscription
      * @param motionEvent type d'évènement effectué sur le bouton
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onTouch(View sender, MotionEvent motionEvent) {
 
@@ -163,14 +166,36 @@ public class MainActivity extends Activity implements View.OnTouchListener{
             case MotionEvent.ACTION_UP:
                 sender.animate().translationX(0).translationY(0).setDuration(200);
                 //if (etPseudo.getText().length() != 0 && etPseudo.getText().length() != 0) {
+                    //animer le chargement
+                    CompassWaitLayout compassWaitLayout = new CompassWaitLayout(getApplicationContext());
+                    bgConn.addView(compassWaitLayout);
+
                     if ((int) sender.getTag() == 1) {
                         Log.i("Connection", "en cours...");
+                        //TODO charger les informations de la BD et après appelé l'ouverture de la vue
+                        //ouvrir la nouvelle page (simuler le temps de chargement)
+                        final MainActivity that = this;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent mapIntent = new Intent(that, MapsActivity.class);
+                                startActivity(mapIntent);
+                            }
+                        },4000);
                     } else {
                         Log.i("Inscription", "en cours...");
+                        //TODO charger les informations de la BD et après appelé l'ouverture de la vue
+                        //ouvrir la nouvelle page (simuler le temps de chargement)
+                        final MainActivity that = this;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent mapIntent = new Intent(that, MapsActivity.class);
+                                startActivity(mapIntent);
+                            }
+                        },4000);
                     }
                 //}
-                Intent mapIntent = new Intent(this, MapsActivity.class);
-                startActivity(mapIntent);
             case MotionEvent.ACTION_CANCEL:
                 sender.animate().translationX(0).translationY(0).setDuration(200);
                 break;

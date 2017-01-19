@@ -2,6 +2,7 @@ package booleancorp.onetxplore.controller;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -50,6 +51,9 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     private EditText etPseudo;
     private EditText etMdp;
     private TextView tvConnexion;
+
+
+    private RelativeLayout btlayout;
     private ImageButton actionBT;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -193,6 +197,15 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         //----boutons d'intéraction
 
+        btlayout = (RelativeLayout) findViewById(R.id.button_layout);
+
+        int heightBL = (int) round(parentIMGLogWidth*0.538) ;
+        LinearLayout.LayoutParams paramsBL = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightBL);
+        int marginBL = (int) round(constante.getScreenHeight()*0.063);
+        paramsBL.setMargins(0,marginBL,0,0);
+        btlayout.setLayoutParams(paramsBL);
+
+
         actionBT = (ImageButton) findViewById(R.id.btnValider);
 
         actionBT.getBackground().setAlpha(0);
@@ -200,6 +213,13 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         actionBT.setOnTouchListener(this);
 
         tvConnexion = (TextView) findViewById(R.id.tvConnexion);
+
+        LinearLayout.LayoutParams paramsTC = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int marginTC = (int) round(constante.getScreenHeight()*0.028);
+        paramsTC.setMargins(0,marginTC,0,0);
+        btlayout.setLayoutParams(paramsTC);
+
+        //----
 
         createContent((int)actionBT.getTag());
 
@@ -311,6 +331,8 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                         boolean connexion = false; // STUB En attendant la fonction connexion de la bd
                         if(!connexion) {
                             // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
+                            etPseudo.setBackgroundColor(Color.parseColor("#100EC6451"));
+                            etMdp.setBackgroundColor(Color.parseColor("#100EC6451"));
                         } else {
                             //ouvrir la nouvelle page (simuler le temps de chargement)
                             final MainActivity that = this;
@@ -328,6 +350,8 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                         boolean inscription = false; // STUB En attendant la fonction inscription de la bd
                         if(!inscription) {
                             // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
+                            etPseudo.setBackgroundColor(Color.parseColor("#50EC6451"));
+                            etMdp.setBackgroundColor(Color.parseColor("#50EC6451"));
                         } else {
                             //ouvrir la nouvelle page (simuler le temps de chargement)
                             final MainActivity that = this;
@@ -340,7 +364,10 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                             }, 4000);
                         }
                     }
-                //}
+                /*} else {
+                    etPseudo.setBackgroundColor(Color.parseColor("#100EC6451"));
+                    etMdp.setBackgroundColor(Color.parseColor("#100EC6451"));
+                }*/
             case MotionEvent.ACTION_CANCEL:
                 sender.animate().translationX(0).translationY(0).setDuration(200);
                 break;

@@ -101,7 +101,9 @@
                 android:background="@drawable/inputshape"
                 android:textColor="#838383"
                 android:textAlignment="center"
-                android:selectAllOnFocus="false" />
+                android:selectAllOnFocus="false"
+                android:nextFocusUp="@id/pseudoField"
+                android:nextFocusLeft="@id/pseudoField"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -134,7 +136,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/button_layout">
 
                 <ImageView
                     android:layout_width="match_parent"

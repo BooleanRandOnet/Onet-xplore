@@ -308,13 +308,6 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     @Override
     public boolean onTouch(View sender, MotionEvent motionEvent) {
 
-        //TEST//
-        Intent mapIntent = new Intent(this, MapsActivity.class);
-        startActivity(mapIntent);
-        //TEST//
-
-
-
 
         final int action = motionEvent.getAction();
 
@@ -335,10 +328,10 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                     bg.animate().alpha(100).setDuration(400);
                     bgConn.animate().alpha(100).setDuration(400);
 
-                    if ((int) sender.getTag() == 1) {
+                    if ((int) sender.getTag() == 0) {
                         Log.i("Connection", "en cours...");
                         //TODO  charger les informations de la BD et après appelé l'ouverture de la vue
-                        boolean connexion = false; // STUB En attendant la fonction connexion de la bd
+                        boolean connexion = true; // STUB En attendant la fonction connexion de la bd
                         if(!connexion) {
                             // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
                             etPseudo.setBackgroundResource(R.drawable.inputshape_error);
@@ -358,7 +351,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                     } else {
                         Log.i("Inscription", "en cours...");
                         //TODO charger les informations de la BD et après appelé l'ouverture de la vue
-                        boolean inscription = false; // STUB En attendant la fonction inscription de la bd
+                        boolean inscription = true; // STUB En attendant la fonction inscription de la bd
                         if(!inscription) {
                             // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
                             etPseudo.setBackgroundResource(R.drawable.inputshape_error);

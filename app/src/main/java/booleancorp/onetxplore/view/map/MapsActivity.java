@@ -1,9 +1,13 @@
 package booleancorp.onetxplore.view.map;
 
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -12,10 +16,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import booleancorp.onetxplore.R;
+import booleancorp.onetxplore.tools.UserLocationManager;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    /**Objet map*/
     private GoogleMap mMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +33,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        ////////////CACHER LA BARRE DE NAVIGATION ET DE NOTIFICATION
+        //location manager
+        UserLocationManager userLocationManager = new UserLocationManager();
+
         View decorView = getWindow().getDecorView();
         // Hide both the navigation bar and the status bar.
         // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
@@ -61,5 +70,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
     }
 }

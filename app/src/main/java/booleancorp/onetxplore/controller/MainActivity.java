@@ -2,7 +2,6 @@ package booleancorp.onetxplore.controller;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,9 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import booleancorp.onetxplore.Animations.CompassWaitLayout;
-import booleancorp.onetxplore.Constants.*;
+import booleancorp.onetxplore.animations.CompassWaitLayout;
+import booleancorp.onetxplore.constants.*;
 import booleancorp.onetxplore.R;
+import booleancorp.onetxplore.tools.UserLocationManager;
 import booleancorp.onetxplore.view.map.MapsActivity;
 
 import static java.lang.Math.round;
@@ -308,31 +308,42 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     @Override
     public boolean onTouch(View sender, MotionEvent motionEvent) {
 
+        //TEST//
+        Intent mapIntent = new Intent(this, MapsActivity.class);
+        startActivity(mapIntent);
+        //TEST//
+
+
+
+
         final int action = motionEvent.getAction();
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                float offset = sender.getWidth() * 0.012f;
+                float offset = sender.getWidth() * 0.011f;
                 sender.animate().translationX(offset).translationY(offset).setDuration(65);
                 break;
             case MotionEvent.ACTION_UP:
                 sender.animate().translationX(0).translationY(0).setDuration(200);
-                //if (etPseudo.getText().length() != 0 && etPseudo.getText().length() != 0) {
+                if (etPseudo.getText().length() > 0 && etPseudo.getText().length() > 0) {
                     //animer le chargement
                     final CompassWaitLayout compassWaitLayout = new CompassWaitLayout(getApplicationContext());
                     bgConn.addView(compassWaitLayout);
+
+                    Log.i("Connection", "en cours...");
 
                     bg.animate().alpha(100).setDuration(400);
                     bgConn.animate().alpha(100).setDuration(400);
 
                     if ((int) sender.getTag() == 1) {
                         Log.i("Connection", "en cours...");
-                        //TODO charger les informations de la BD et après appelé l'ouverture de la vue
+                        //TODO  charger les informations de la BD et après appelé l'ouverture de la vue
                         boolean connexion = false; // STUB En attendant la fonction connexion de la bd
                         if(!connexion) {
                             // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
-                            etPseudo.setBackgroundColor(Color.parseColor("#100EC6451"));
-                            etMdp.setBackgroundColor(Color.parseColor("#100EC6451"));
+                            etPseudo.setBackgroundResource(R.drawable.inputshape_error);
+                            etMdp.setBackgroundResource(R.drawable.inputshape_error);
+                            compassWaitLayout.removeFromParent();
                         } else {
                             //ouvrir la nouvelle page (simuler le temps de chargement)
                             final MainActivity that = this;
@@ -350,8 +361,9 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                         boolean inscription = false; // STUB En attendant la fonction inscription de la bd
                         if(!inscription) {
                             // TODO Matthieu : Gérer les modifications graphiques en cas de bad mp
-                            etPseudo.setBackgroundColor(Color.parseColor("#50EC6451"));
-                            etMdp.setBackgroundColor(Color.parseColor("#50EC6451"));
+                            etPseudo.setBackgroundResource(R.drawable.inputshape_error);
+                            etMdp.setBackgroundResource(R.drawable.inputshape_error);
+                            compassWaitLayout.removeFromParent();
                         } else {
                             //ouvrir la nouvelle page (simuler le temps de chargement)
                             final MainActivity that = this;
@@ -364,15 +376,14 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                             }, 4000);
                         }
                     }
-                /*} else {
-                    etPseudo.setBackgroundColor(Color.parseColor("#100EC6451"));
-                    etMdp.setBackgroundColor(Color.parseColor("#100EC6451"));
-                }*/
+                } else {
+                    etPseudo.setBackgroundResource(R.drawable.inputshape_error);
+                    etMdp.setBackgroundResource(R.drawable.inputshape_error);
+                }
             case MotionEvent.ACTION_CANCEL:
                 sender.animate().translationX(0).translationY(0).setDuration(200);
                 break;
         }
-
         return false;
     }
 }

@@ -35,7 +35,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         //location manager
-        UserLocationManager userLocationManager = new UserLocationManager();
+        UserLocationManager userLocationManager = new UserLocationManager(getApplicationContext());
+
+        userLocationManager.getLocation();
 
         hideComponent();
     }

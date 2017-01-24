@@ -25,7 +25,7 @@ import static android.content.Context.LOCATION_SERVICE;
 
 public class UserLocationManager implements LocationListener {
 
-    //TODO Faire que ca marche
+    //TODO Faire que ca marche = Géolocaliser l'user ?
 
     private Context context;
 

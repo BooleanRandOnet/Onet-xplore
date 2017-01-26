@@ -1,16 +1,15 @@
-package booleancorp.onetxplore.Animations;
+package booleancorp.onetxplore.animations;
 
-import android.app.ActionBar;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import booleancorp.onetxplore.Constants.Constante;
+import booleancorp.onetxplore.constants.Constante;
 import booleancorp.onetxplore.R;
+import booleancorp.onetxplore.tools.UserLocationManager;
 
 import static java.lang.Math.round;
 
@@ -59,6 +58,8 @@ public class CompassWaitLayout extends RelativeLayout {
         animate().alpha(1).setDuration(400);
 
         animCompass();
+
+
     }
 
 
@@ -76,6 +77,20 @@ public class CompassWaitLayout extends RelativeLayout {
                         animCompass();
                     }
                 });
+            }
+        });
+    }
+
+    /**
+     * Retirer la vue de son parent avec une animation
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public void removeFromParent(){
+        final CompassWaitLayout that = this;
+        animate().alpha(0).setDuration(300).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                ((ViewGroup)getParent()).removeView(that);
             }
         });
     }

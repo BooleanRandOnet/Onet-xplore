@@ -25,7 +25,7 @@ import static android.content.Context.LOCATION_SERVICE;
 
 public class UserLocationManager implements LocationListener {
 
-    //TODO Faire que ca marche = Géolocaliser l'user ?
+    //TODO Faire que ca marche = Géolocaliser l'user ? A clarifier
 
     private Context context;
 
@@ -46,7 +46,6 @@ public class UserLocationManager implements LocationListener {
     /**
      * Gestion de la récupération de la position de l'utilisateur
      */
-
     public UserLocationManager(Context context) {
         this.context = context;
         getLocation();

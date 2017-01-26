@@ -1,6 +1,7 @@
 package booleancorp.onetxplore.controller;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.SupportMapFragment;
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 import booleancorp.onetxplore.R;
+import booleancorp.onetxplore.tools.UserLocationManager;
 import booleancorp.onetxplore.view.map.BottomBarFragment;
 
 /**
@@ -42,10 +44,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        UserLocationManager localisation = new UserLocationManager(this);
+        Location posCurr = localisation.getLocation();
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(localisation.getLatitude(), localisation.getLongitude());
         googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
+
+
 }

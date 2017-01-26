@@ -31,7 +31,7 @@ import static java.lang.Math.round;
 public class MainActivity extends Activity implements View.OnTouchListener{
 
     /**Constante*/
-    private Constante constante;
+    private booleancorp.onetxplore.constants.Constante constante;
 
     /**Element de la vue*/
     private ImageView bg;

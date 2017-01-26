@@ -25,7 +25,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.MainActivity"
+        <activity android:name=".controller.LaunchActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
 
         <!--MAPS-->
         <activity
-            android:name=".view.map.MapsActivity"
+            android:name=".controller.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <!--

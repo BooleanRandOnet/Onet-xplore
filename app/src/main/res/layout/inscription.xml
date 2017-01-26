@@ -9,7 +9,7 @@
     android:id="@+id/container"
     android:clipChildren="false">
 
-    <!--!!!Attention les dimensions sont gérées dans le java MainActivity!!!-->
+    <!--!!!Attention les dimensions sont gérées dans le java LaunchActivity!!!-->
 
     <ImageView
         android:layout_width="0dp"

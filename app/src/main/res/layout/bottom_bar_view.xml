@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
@@ -16,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dip"
         android:text=" "
+        android:id="@+id/red_bar"
         android:background="@drawable/bg_bottom_bar_border"
         android:layout_above="@+id/background_tv"
         android:layout_alignParentLeft="true"
@@ -24,7 +26,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dip"
+        android:layout_height="55dip"
         android:id="@+id/background_tv"
         android:background="@drawable/bg_bottom_bar"
         android:text=" "
@@ -35,27 +37,43 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="75dip"
-        android:paddingLeft="-30dip"
+        android:paddingLeft="-60dip"
         android:src="@drawable/userdefault"
         android:contentDescription="@string/app_name"
         android:id="@+id/avatar_iv"
         android:layout_above="@+id/user_lvl_tv"
-        android:layout_marginBottom="13dp" />
+        android:layout_marginBottom="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Niveau 1"
+        android:textStyle="bold"
         android:textColor="@color/customRedColor"
         android:id="@+id/user_lvl_tv"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        tools:paddingBottom="5dip" />
+        tools:paddingBottom="13dip" />
 
 
     <!-- TODO Arrow menu view -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/arrow_bt"
+        android:id="@+id/imageView"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/user_lvl_tv"
+        android:layout_toEndOf="@+id/user_lvl_tv"
+        android:paddingLeft="30dp"
+        android:layout_below="@+id/red_bar"
+        android:paddingBottom="15dip"
+        android:paddingTop="15dip"/>
+
+
+
 
 </RelativeLayout>

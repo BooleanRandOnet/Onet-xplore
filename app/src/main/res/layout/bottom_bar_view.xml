@@ -1,38 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content" >
+
+
 
     <!-- TODO Background -->
 
     <!-- TODO User imgView -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+
+    <!-- TODO User lvl label -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:text=" "
+        android:background="@drawable/bg_bottom_bar_border"
+        android:layout_above="@+id/background_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:id="@+id/background_tv"
+        android:background="@drawable/bg_bottom_bar"
+        android:text=" "
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="75dip"
+        android:paddingLeft="-30dip"
+        android:src="@drawable/userdefault"
+        android:contentDescription="@string/app_name"
+        android:id="@+id/avatar_iv"
+        android:layout_above="@+id/user_lvl_tv"
+        android:layout_marginBottom="13dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dip"
-            android:src="@drawable/userdefault"
-            android:contentDescription="@string/app_name" />
-
-        <!-- TODO User lvl label -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="STUB : Bottom bar"/>
-
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:layout_marginTop="50dip"
-            android:layout_width="match_parent"
-            android:layout_height="25dip"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
-
-
+        android:text="Niveau 1"
+        android:textColor="@color/customRedColor"
+        android:id="@+id/user_lvl_tv"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:paddingBottom="5dip" />
 
 
     <!-- TODO Arrow menu view -->

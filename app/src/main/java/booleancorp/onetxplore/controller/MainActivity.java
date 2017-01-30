@@ -39,6 +39,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         BottomBarFragment bottomBar = (BottomBarFragment)
                 getSupportFragmentManager().findFragmentById(R.id.bottom_bar);
 
+
     }
 
 

@@ -145,9 +145,7 @@ public class UserLocationManager implements LocationListener {
     }
 
     public boolean canGetLocation(){
-
         return this.canGetLocation;
-
     }
 
     /**

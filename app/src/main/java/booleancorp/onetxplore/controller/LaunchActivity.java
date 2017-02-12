@@ -83,7 +83,7 @@ public class LaunchActivity extends Activity implements View.OnTouchListener{
 
         //animation d'ouverture
         bgConn.setY(constante.getScreenHeight());
-        bgConn.animate().translationY(0).setDuration(500).setInterpolator(new LinearOutSlowInInterpolator());
+        bgConn.animate().translationY(0).setDuration(250).setInterpolator(new LinearOutSlowInInterpolator());
         //----
 
         //----layout de contenu

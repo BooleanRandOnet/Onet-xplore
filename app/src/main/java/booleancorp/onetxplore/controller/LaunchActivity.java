@@ -235,7 +235,7 @@ public class LaunchActivity extends Activity implements View.OnTouchListener{
         }
 
 
-        hideComponent();
+        //hideComponent();
     }
 
     /**

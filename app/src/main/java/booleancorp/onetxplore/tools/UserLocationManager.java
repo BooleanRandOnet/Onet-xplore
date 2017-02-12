@@ -100,10 +100,7 @@ public class UserLocationManager implements LocationListener {
 
                     }
                 }
-
-
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,8 +155,8 @@ public class UserLocationManager implements LocationListener {
      */
     public void showSettingsAlert(){
         Builder alertDialog=new Builder(context);
-        alertDialog.setTitle("Votre localisation");
-        alertDialog.setMessage("Le GPS n'est pas activé, il est primordial pour le bon fonctionnemnt de l'application ");
+        alertDialog.setTitle("Localisation requise");
+        alertDialog.setMessage("Le GPS n'est pas activé, il est primordial pour le bon fonctionnement de l'application");
         alertDialog.setPositiveButton("Paramètres", new DialogInterface.OnClickListener() {
 
             @Override

@@ -1,6 +1,7 @@
 package booleancorp.onetxplore.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -70,8 +71,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Mission en cours",Toast.LENGTH_LONG).show();
+                Intent missionIntent = new Intent(getApplicationContext(),MissionActivity.class);
+                startActivity(missionIntent);
             }
         });
+
 
 
     }

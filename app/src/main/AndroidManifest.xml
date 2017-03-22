@@ -34,6 +34,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Menu mission -->
+        <activity
+            android:name=".controller.MissionActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+
         <!--MAPS-->
         <activity
             android:name=".controller.MainActivity"
